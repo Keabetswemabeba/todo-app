@@ -1,38 +1,300 @@
-.App {
+*, .container{
   text-align: center;
+  justify-content: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container{
+  margin-top: 20%;
+  color: white;
+  background-color: white;
+  box-sizing: border-box;
+  height: fit-content;
+  outline: none;
+  margin-bottom: 20%;
+}
+.container h1{
+  color: #7439db;
+}
+.input_space{
+  margin-bottom: 10px;
+}
+.input_space input{
+  height: 30px;
+  width: 20%;
+  font-size: 18px;
+  background: #C66FBC;
+  color: black;
+}
+.input_space input:hover{
+  color: white;
+  background: #7439db;
+  transition: 1s ease-in-out;
+}
+.login-btn{
+  width: 20%;
+  text-align: center;
+  border: none;
+  background: linear-gradient(79deg, #7439db, #C66FBC 48%, #F7944D);
+  padding: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #ffff;
+  font-weight: bolder;
+  font-size: 15px;
+}
+.login-btn:hover{
+  color: #7439db;
+  background: #e7b794;
+  border: #7128f0;
+  transition: 1s ease-in-out;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+*, .todo{
+  /* background: linear-gradient(79deg, #7439db, #C66FBC 48%, #ec741e); */
+  outline: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.logout{
+  margin-right: 5px;
+  color: rgb(0, 0, 0);
+  font-weight: bolder;
+  height: 30px;
+  width: 100px;
+  background: rgb(255, 255, 255);
+  border: none;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #7128f0;
+  border-radius: 2px;
+  box-shadow: 0px 5px 7px #7439db;
+}
+.logout:hover{
+  color: #000000;
+  background: linear-gradient(79deg, #7439db, #C66FBC 48%, #F7944D);
+  transition: 1s ease-in-out;
+  font-style: italic;
+  font-weight: bolder;
+  border-radius: 5px;
+  border: none;
+}
+.delete{
+  margin-right: 10px;
+  color: rgb(0, 0, 0);
+  font-weight: bolder;
+  height: 30px;
+  width: 100px;
+  background: rgb(148, 144, 144);
+  border: none;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid rgb(43, 42, 42);
+  border-radius: 2px;
+  box-shadow: 0px 5px 7px rgb(36, 30, 30);
+}
+.delete:hover{
+  color: #000000;
+  background: linear-gradient(79deg, #ff0000, #ff1414 48%, #eb1616);
+  border: none;
+  border-radius: 5px;
+  font-weight: bolder;
+  font-style: italic;
+  transition: 1s ease-in-out;
+}
+.head{
+  font-weight: bolder;
+  font-style: italic;
+  font-size: 70px;
+}
+.para{
+  color: black;
+  justify-content: center;
+  text-align: center;
+  font-style: italic;
+  font-weight: bolder;
+  font-size: 20px;
+  height: 50px;
+  margin-top: 10px;
+}
+.todo{
+  width: 100%;
+  margin-top: 7%;
+  outline: none;
+}
+
+select{
+  height: 30px;
+  width: 20%;
+  font-size: 18px;
+  background: #e9ade4;
+  color: black;
+}
+.todo-wrapper{
+  padding: 2%;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0px 5px 7px #7439db;
+}
+.todo-input{
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  border-bottom: 1px solid #7439db;
+  padding-bottom: 25px;
+  margin-bottom: 25px;
+}
+.todo-input-item{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-right: 25px;
+}
+.todo-input-item label{
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.todo-input-item input{
+  padding: 8px;
+  border: none;
+  width: 250px;
 }
 
-.App-link {
-  color: #61dafb;
+.todo-input-item input:focus{
+  outline: none;
+  border: 2px solid #7439db;
+}
+.add-task-btn{
+  margin-top: 25px;
+  height: 35px;
+  width: 150px;
+  font-weight: bolder;
+  font-size: 15px;
+  font-style: italic;
+  background: #C66FBC 48%;
+  border: none;
+  border-radius: 0px;
+  padding: 10px;
+  cursor: pointer;
+  text-align: center;
+}
+.add-task-btn:hover{
+  background-color: #7128f0;
+  transition: 1s ease-in-out;
+}
+.update-todo{
+  margin-top: 5px;
+  height: 35px;
+  width: 150px;
+  font-weight: bolder;
+  font-size: 15px;
+  font-style: italic;
+  background: #4cc0ee 48%;
+  border: none;
+  border-radius: 2px;
+  padding: 10px;
+  cursor: pointer;
+}
+.update-todo:hover{
+  background-color: #07c410;
+  transition: 1s ease-in-out;
+}
+.secondaryBtn{
+  margin-top: 25px;
+  height: 35px;
+  width: fit-content;
+  font-weight: bolder;
+  font-size: 15px;
+  font-style: italic;
+  color: #ffff;
+  background: rgb(71, 71, 71);
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+.active{
+  background-color: #7128f0;
+}
+.todo-list{
+  display: flex;
+  flex-direction: column;
+}
+.btn-area{
+  margin-bottom: 15px;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+}
+.todo-list-item{
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 25px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0px 3px 5px #b292eb;
+}
+.todo-list-item h2{
+  font-size: 30px;
+  color: #7128f0;
+  font-weight: bold;
+  align-items: left;
+}
+.todo-list-item h4{
+  font-size: 18px;
+  color: #b08fe9;
+  font-weight: bold;
+  align-items: left;
+}
+.todo-list-item p{
+  font-size: 20px;
+  color: #C66FBC;
+  font-weight: bold;
+  align-items: left;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.icon{
+  color: red;
+  font-size: 30px;
+  cursor: pointer;
+}
+.icon:hover{
+  color: red;
+  transition: 1s ease-in-out;
+}
+
+.check-icon{
+  font-size: 30px;
+  margin-left: 10px;
+  color: rgb(0, 230, 122);
+}
+.check-icon:hover{
+  color: #7128f0;
+}
+.edit-icon{
+  color: rgb(4, 207, 214);
+  font-size: 30px;
+  padding-right: 15px;
+  cursor: pointer;
+}
+.submit-btn-area{
+  display: flex;
+  justify-content: space-between;
+}
+.edit-icon:hover{
+  color: rgb(15, 211, 15);
+  transition: 1s ease-in-out;
+}
+.search{
+  padding: 5px;
+  margin-bottom: 5px;
+  justify-content: center;
+  align-items: center;
+  color: #7128f0;
+  border: 1px solid;
+  font-weight: bold;
 }
