@@ -23,6 +23,8 @@ function Home() {
   const [completedTodos, setCompletedTodos] = useState([]);
   const [search, setSearch] = useState("");
 
+  const [editIndex, setEditIndex] = useState(-1);
+
   const handleAddTodo = () => {
     let newTodoItem = {
       title: newTitle,
@@ -36,34 +38,30 @@ function Home() {
     localStorage.setItem("todolist", JSON.stringify(updatedTodoArr));
   };
 
-  function handleEditTodo (item) {
+  function handleEditTodo(item, index) {
+    setNewTitle(item.title);
+    setNewDescription(item.description);
+    setNewPriority(item.priority);
+    setEditIndex(index);
+  }
 
-    setNewTitle(item.newTitle)
-    setNewDescription(item.newDescription)
-    setNewPriority(item.newPriority)
-
-    console.log(item)
-  };
-
-  const handleUpdate =(e) => {
-    e.preventDefault()
+  const handleUpdate = (e) => {
+    e.preventDefault();
 
     let updatedTodo = {
-      newTitle,
-      newDescription,
-      newPriority
-    }
+      title: newTitle,
+      description: newDescription,
+      priority: newPriority,
+    };
 
-    setNewTitle(newTitle)
-    setNewDescription(newDescription)
-    setNewPriority(newPriority)
+    setTodos((prevTodos) => {
+      const updatedTodos = [...prevTodos];
+      updatedTodos[editIndex] = updatedTodo;
+      return updatedTodos;
+    });
 
-    setTodos(allTodos.map(todolist => {
-      return todolist.newTitle === newTitle ? updatedTodo : todolist
-    }))
-
-    console.log(updatedTodo)
-  }
+    setEditIndex(-1);
+  };
 
   const handleDeleteTodo = (index) => {
     let reducedTodo = [...allTodos];
@@ -205,29 +203,75 @@ function Home() {
               .map((item, index) => {
                 return (
                   <div className="todo-list-item" key={index}>
-                    <div>
-                      <h2>{item.title}</h2>
-                      <p>{item.description}</p>
-                      <h4>{item.priority}</h4>
-                    </div>
+                    {editIndex === index ? (
+                      <div>
+                        <div className="todo-input-item">
+                          <label>Task</label>
+                          <input
+                            type="text"
+                            value={newTitle}
+                            onChange={(e) => setNewTitle(e.target.value)}
+                            placeholder="Task title"
+                          />
+                        </div>
+                        <div className="todo-input-item">
+                          <label>Description</label>
+                          <input
+                            type="text"
+                            value={newDescription}
+                            onChange={(e) => setNewDescription(e.target.value)}
+                            placeholder="Description"
+                          />
+                        </div>
+                        <div className="todo-input-item">
+                          <label>Priority</label>
+                          <select
+                            value={newPriority}
+                            id="state"
+                            onChange={(e) => setNewPriority(e.target.value)}
+                          >
+                            <option>Low</option>
+                            <option>Medium</option>
+                            <option>High</option>
+                          </select>
+                        </div>
+                        <div className="todo-input-item">
+                          <button
+                            type="button"
+                            onClick={handleUpdate}
+                            className="update-todo"
+                          >
+                            Update
+                          </button>
+                        </div>
+                      </div>
+                    ) : (
+                      <div>
+                        <div>
+                          <h2>{item.title}</h2>
+                          <p>{item.description}</p>
+                          <h4>{item.priority}</h4>
+                        </div>
 
-                    <div className="submit-btn-area">
-                      <AiFillEdit
-                        className="edit-icon"
-                        onClick={() => handleEditTodo(item)}
-                        title="Edit"
-                      />
-                      <AiOutlineDelete
-                        className="icon"
-                        onClick={() => handleDeleteTodo(index)}
-                        title="Delete?"
-                      />
-                      <BsCheckLg
-                        className="check-icon"
-                        onClick={() => handleComplete(index)}
-                        title="Complete?"
-                      />
-                    </div>
+                        <div className="submit-btn-area">
+                          <AiFillEdit
+                            className="edit-icon"
+                            onClick={() => handleEditTodo(item, index)}
+                            title="Edit"
+                          />
+                          <AiOutlineDelete
+                            className="icon"
+                            onClick={() => handleDeleteTodo(index)}
+                            title="Delete?"
+                          />
+                          <BsCheckLg
+                            className="check-icon"
+                            onClick={() => handleComplete(index)}
+                            title="Complete?"
+                          />
+                        </div>
+                      </div>
+                    )}
                   </div>
                 );
               })}
